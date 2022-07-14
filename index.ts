@@ -1,9 +1,15 @@
-const express = require("express");
+import express, { Request, Response } from "express";
 const app = express();
+
 const port = 3000;
 
-app.get("/", (req: any, res: any) => {
-  res.send("hello world!");
+app.get("/", (req: Request, res: Response) => {
+  res.send("hello world! this is your home page!");
+});
+
+app.get("/products/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  res.send(`product ${id}`);
 });
 
 app.listen(port, () => {
