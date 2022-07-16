@@ -8,11 +8,11 @@ interface ProductInterface {
 }
 
 const router = express.Router();
-const Product = require("../models/Product");
+const Products = require("../models/Product");
 
-router.get("/", async (req: Request, res: Response) => {
+router.get("/get", async (req: Request, res: Response) => {
   try {
-    const products = await Product.find();
+    const products = await Products.find();
     res.json(products);
   } catch (err) {
     res.json(err);
@@ -21,7 +21,7 @@ router.get("/", async (req: Request, res: Response) => {
 
 router.get("/:id", async (req: Request<{ id: string }>, res: Response) => {
   try {
-    const products = await Product.find();
+    const products = await Products.find();
     res.json(products);
   } catch (err) {
     res.json(err);
@@ -30,7 +30,7 @@ router.get("/:id", async (req: Request<{ id: string }>, res: Response) => {
 
 router.post("/add", async (req: Request, res: Response) => {
   const response = req.body;
-  const createdProduct = new Product({
+  const createdProduct = new Products({
     name: response.name,
     price: response.price,
     image: response.image,

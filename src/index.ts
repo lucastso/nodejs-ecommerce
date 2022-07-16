@@ -1,5 +1,6 @@
 import express from "express";
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv/config");
 
 const app = express();
@@ -7,6 +8,7 @@ const port = 3000;
 const productsRoute = require("./routes/products");
 
 app.use(express.json());
+app.use(cors({ origin: true, credentials: true }));
 app.use("/products", productsRoute);
 
 mongoose.connect(
@@ -23,6 +25,7 @@ mongoose.Promise = global.Promise;
 module.exports = mongoose;
 
 app.get("/", (req, res) => {
-  res.send("Homepage");
+  res.send("aaa");
 });
+
 app.listen(port);
