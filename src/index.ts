@@ -1,11 +1,11 @@
 import express from "express";
+require("dotenv/config");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv/config");
+const productsRoute = require("./routes/products");
 
 const app = express();
 const port = 3000;
-const productsRoute = require("./routes/products");
 
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
@@ -25,7 +25,7 @@ mongoose.Promise = global.Promise;
 module.exports = mongoose;
 
 app.get("/", (req, res) => {
-  res.send("aaa");
+  res.send("Homepage");
 });
 
 app.listen(port);

@@ -12,7 +12,7 @@ const Products = require("../models/Product");
 
 router.get("/get", async (req: Request, res: Response) => {
   try {
-    const products = await Products.find({}).toArray();
+    const products = await Products.find({});
     res.json(products);
   } catch (err) {
     res.json(err);
