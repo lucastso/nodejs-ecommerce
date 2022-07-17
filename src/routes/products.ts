@@ -8,9 +8,9 @@ interface ProductInterface {
 }
 
 const router = express.Router();
-const Products = require("../models/Product");
+const Products = require("../models/Products");
 
-router.get("/get", async (req: Request, res: Response) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
     const products = await Products.find({});
     res.json(products);
